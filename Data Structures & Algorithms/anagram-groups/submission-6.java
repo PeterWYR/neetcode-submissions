@@ -1,0 +1,18 @@
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (String s : strs) {
+            char[] chars = s.toCharArray();
+            Arrays.sort(chars); // 排序
+            String key = new String(chars);
+
+            // 如果没有这个key就创建
+            map.putIfAbsent(key, new ArrayList<>());
+            map.get(key).add(s);
+        }
+
+        return new ArrayList<>(map.values());
+    }
+}
